@@ -12,6 +12,10 @@ const names = await page.evaluate(()=>{
 })
 await fs.writeFile("names.txt",names.join("\r\n"))
 
+await page.click("#clickme")
+
+const clickedData = await page.$eval("#data",el=>el.textContent)
+
 const photos =  await page.$$eval("img",(images)=>{
 return images.map(x=>x.src)
 })
